@@ -1,0 +1,10 @@
+<% include header %>
+
+        <h3>Search History</h3>
+    <% if(searchKeywords.length > 0){ %>
+       <% searchKeywords.forEach(function(data, index){ %>
+           <a href="/showDbImages/<%=data%>" ><%= data %></a>
+        <% }) %>
+    <% } %>
+
+<% include footer %>

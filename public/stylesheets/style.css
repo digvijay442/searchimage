@@ -1,0 +1,10 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.img-thumbnail {
+  width: 300px;
+  height: 100%;
+  alt: "Img";
+}

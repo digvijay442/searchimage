@@ -1,0 +1,10 @@
+<%include header%>
+        <h2>Results: <%=searchKey%></h2>
+        <div>
+      <%  if(dbResults.length > 0){ %>
+            <% dbResults.forEach(function(data, index){ %>
+            <img src="<%=data%>" class="img-thumbnail" >
+           <% }) %>
+        <% } %>
+    </div>
+<% include footer %>
