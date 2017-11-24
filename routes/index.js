@@ -22,9 +22,11 @@ router.post('/',function(req, res){
 google.list({
     keyword: keyword,
     num: 15,
+    rlimit: '10',
+    timeout: 100,
      detail: false,
     nightmare: {
-        show: true
+        show: false
     }
 })
 .then(function (response) {
