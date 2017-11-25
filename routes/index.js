@@ -40,7 +40,7 @@ google.list({
 
    res.render('index',{title: 'Express', imgs: imgs, page_name: page_name})
 
-   db.collection('searchResults').find({searchKeyword : data.searchKeyword}).toArray( (err, result) =>{
+   db.collection('searchResults').find({searchKeyword : data.searchKeyword}, { cursor: {batchSize: 1}}).toArray( (err, result) =>{
      if(err) throw err;
      else if( result.length == 0 ){
       console.log('----------Save result--------')
