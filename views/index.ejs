@@ -1,6 +1,5 @@
 <% include header %>
     <h2>Search Google images</h2>
-    <!-- <p>Welcome to <%= title %></p> -->
     <form action="/" method="post">
       <div class='form-group'>
         <input type="text" placeholder="Enter keyword to search" name='searchKeyword' id='inputBox' class="form-control">
@@ -9,7 +8,10 @@
       <button class="btn btn-default" id='btnSubmit'>Submit</button>
     </div>
     </form>
-    <div>
+    <% if(searchKey != null){ %>
+      <h4>Result: <%=searchKey%> </h4>
+    <% } %>
+    <div align="center"> 
       <% if( imgs.length > 0) { %>
           <% imgs.forEach(function(img, index){ %>
             <img src="<%= img.url %>" class="img-thumbnail">

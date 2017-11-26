@@ -8,20 +8,22 @@ var express = require('express');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var imgs = [];
-  res.render('index', { title: 'Express', imgs: imgs, page_name:page_name });
+  var imgs = [], keyword;
+  res.render('index', { title: 'Express', imgs: imgs, page_name:page_name, searchKey:keyword });
 });
 
+
+/* return search results to home page */
 router.post('/',function(req, res){
   var keyword = req.body.searchKeyword.charAt(0).toUpperCase() + req.body.searchKeyword.substr(1).toLowerCase();
 google.list({
     keyword: keyword,
     num: 15,
     // rlimit: '10',
-    timeout: 1000,
+    timeout: 100,
      detail: false,
     nightmare: {
-        show: true
+        show: false
     }
 })
 .then(function (response) {
@@ -33,7 +35,7 @@ google.list({
   }
    console.log(imgsUrls)
 
-   res.render('index',{title: 'Express', imgs: imgs, page_name: page_name})
+   res.render('index',{title: 'google images', imgs: imgs, page_name: page_name, searchKey:keyword})
 
    db.collection('searchResults').find({searchKeyword : data.searchKeyword}).toArray( (err, result) =>{
      if(err) throw err;
